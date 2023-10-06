@@ -13,6 +13,7 @@
 #include "lora_utils.h"
 #include "gps_utils.h"
 #include "bme_utils.h"
+#include "bmp_utils.h"
 #include "display.h"
 #include "utils.h"
 
@@ -104,14 +105,18 @@ void checkBeaconInterval() {
         if (Config.bme.active) {
             beaconPacket = iGateBeaconPacket.substring(0,iGateBeaconPacket.indexOf(":=")+20) + "_" + BME_Utils::readDataSensor() + iGateBeaconPacket.substring(iGateBeaconPacket.indexOf(":=")+21) + " + WX";
         } else {
-            beaconPacket = iGateBeaconPacket;
+            if (Config.bmp.active) {
+                beaconPacket = iGateBeaconPacket.substring(0,iGateBeaconPacket.indexOf(":=")+20) + "_" + BMP_Utils::readDataSensor() + iGateBeaconPacket.substring(iGateBeaconPacket.indexOf(":=")+21) + " + WX";
+            } else {
+                beaconPacket = iGateBeaconPacket;
+            }
         }
         if (Config.sendBatteryVoltage) {
             beaconPacket += " (Batt=" + String(BATTERY_Utils::checkVoltages(),2) + "V)";
         }
         if (stationMode==1 || stationMode==2) {
             thirdLine = getLocalIP();
-            if (!Config.bme.active) {
+            if (!Config.bme.active && !Config.bmp.active) {
                 fifthLine = "";
             }
             sixthLine = "";
@@ -147,7 +152,7 @@ void checkBeaconInterval() {
                 LoRa_Utils::changeFreqRx();
             }
         } else if (stationMode==5) {
-            if (!Config.bme.active) {
+            if (!Config.bme.active && !Config.bmp.active) {
                 fifthLine = "";
             }
             sixthLine = "";

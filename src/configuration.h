@@ -58,6 +58,11 @@ public:
   bool    active;
 };
 
+class BMP {
+public:
+  bool    active;
+};
+
 class OTA {
 public:
   String  username;
@@ -82,6 +87,7 @@ public:
   Display               display;
   SYSLOG                syslog;
   BME                   bme;
+  BMP                   bmp;
   OTA                   ota;
   
 

@@ -49,6 +49,9 @@
 	"bme": {
 		"active": false
 	},
+	"bmp": {
+		"active": false
+	},	
 	"ota": {
 		"username":"",
 		"password": ""

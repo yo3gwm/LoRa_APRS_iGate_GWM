@@ -65,6 +65,8 @@ void Configuration::readFile(fs::FS &fs, const char *fileName) {
 
     bme.active                      = data["bme"]["active"].as<bool>();
 
+    bmp.active                      = data["bmp"]["active"].as<bool>();
+
     ota.username                    = data["ota"]["username"].as<String>();
     ota.password                    = data["ota"]["password"].as<String>();
     

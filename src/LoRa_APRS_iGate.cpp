@@ -13,6 +13,7 @@
 #include "digi_utils.h"
 #include "gps_utils.h"
 #include "bme_utils.h"
+#include "bmp_utils.h"
 #include "display.h"
 #include "utils.h"
 
@@ -20,7 +21,7 @@
 Configuration   Config;
 WiFiClient      espClient;
 
-String          versionDate           = "2023.08.29";
+String          versionDate           = "2023.10.06";
 int             myWiFiAPIndex         = 0;
 int             myWiFiAPSize          = Config.wifiAPs.size();
 WiFi_AP         *currentWiFi          = &Config.wifiAPs[myWiFiAPIndex];
@@ -56,6 +57,7 @@ void setup() {
   Utils::startServer();
   SYSLOG_Utils::setup();
   BME_Utils::setup();
+  BMP_Utils::setup();
 }
 
 void loop() {
