@@ -1,4 +1,4 @@
-# Richonguzman / CD2RXU LoRa APRS iGate/Digirepeater
+LoRa APRS iGate/Digirepeater/WX Station
 
 ## If you have the 2023.06.12 firmware (or later) you can update newer <a href="https://github.com/yo3gwm/LoRa_APRS_iGate_GWM/tree/main/firmware" target="_blank">in here</a> , look for newest an upload over OTA (without needing VSCODE)
 
@@ -71,6 +71,10 @@ g) BME section:
 
     adjust to "active" if BME280 sensor connected through I2C pins
 
+f) BMP section:
+
+    adjust to "active" if BMP280 sensor connected through I2C pins
+
 __________________________________________
 
 LoRa APRS iGATE/Digirepeater working on this boards:
@@ -95,9 +99,13 @@ Versions:
 - 2023.07.16 Small OTA, BME module update.
 - 2023.07.31 StationMode5 added: iGate when WiFi and APRS available, DigiRepeater when not.
 - 2023.08.05 Ground Height Correction for Pressure readings added
+- 2023.10.06 Added support for BMP280
 
 __________________________________________
 
 Special Thanks to the help in testing and developing to Manfred (DC2MH) , for showing me the "way of good coding" to Tihomir (CA3TSK) and much more Ham Licence Ops all over the world.
 
-# Hope You Enjoy this, 73 !!  CD2RXU , Valparaiso, Chile
+Thank you CD2RXU
+
+73 de Cristi Mitroi YO3GWM
+Bucuresti, Romania
