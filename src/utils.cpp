@@ -52,12 +52,12 @@ void processStatus() {
     String status = Config.callsign + ">APLRG1";
     if (stationMode==1 || stationMode==2 || (stationMode==5 && WiFi.status() == WL_CONNECTED)) {
         delay(1000);
-        status += ",qAC:>https://github.com/richonguzman/LoRa_APRS_iGate " + versionDate ;
+        status += ",qAC:>https://github.com/yo3gwm/LoRa_APRS_iGate_GWM " + versionDate ;
         espClient.write((status + "\n").c_str());
         SYSLOG_Utils::log("APRSIS Tx", status,0,0,0);
     } else {
         delay(5000);
-        status += ":>https://github.com/richonguzman/LoRa_APRS_iGate " + versionDate;
+        status += ":>https://github.com/yo3gwm/LoRa_APRS_iGate_GWM " + versionDate;
         if (stationMode == 4) {
             LoRa_Utils::changeFreqTx();
         }
@@ -77,7 +77,7 @@ void setupDisplay() {
     setup_display();
     digitalWrite(greenLed,HIGH);
     Serial.println("\nStarting iGate: " + Config.callsign + "   Version: " + versionDate);
-    show_display(" LoRa APRS", "      ( iGate )", "", "     Richonguzman", "     -- CD2RXU --", "", "      " + versionDate, 4000);
+    show_display(" LoRa APRS", "      ( iGate )", "", "    Cristi Mitroi", "     -- YO3GWM --", "", "      " + versionDate, 4000);
     digitalWrite(greenLed,LOW);
     firstLine   = Config.callsign;
     seventhLine = "     listening...";
@@ -270,7 +270,7 @@ void typeOfPacket(String packet, String packetType) {
 void startServer() {
     if (stationMode==1 || stationMode==2 || (stationMode==5 && WiFi.status() == WL_CONNECTED)) {
         server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-            request->send(200, "text/plain", "Hi " + Config.callsign + ", \n\nthis is your (Richonguzman/CD2RXU) LoRa iGate , version " + versionDate + ".\n\nTo update your firmware or filesystem go to: http://" + getLocalIP().substring(getLocalIP().indexOf(":")+3) + "/update\n\n\n73!");
+            request->send(200, "text/html", "<HTML>Hi " + Config.callsign + ", \n\nthis is your LoRa iGate/Digipeater/WX Station , version " + versionDate + ".\n\nTo update your firmware or filesystem go to: <a href=\"http://" + getLocalIP().substring(getLocalIP().indexOf(":")+3) + "/update\">Update Page</a>\n\n\n73!</HTML>");
         });
 
 
