@@ -1,13 +1,18 @@
 LoRa APRS iGate/Digirepeater/WX Station
 
-## If you have the 2023.06.12 firmware (or later) you can update newer <a href="https://github.com/yo3gwm/LoRa_APRS_iGate_GWM/tree/main/firmware" target="_blank">in here</a> , look for newest an upload over OTA (without needing VSCODE)
+# If you have the 2023.06.12 firmware (or later) you can update newer <a href="https://github.com/yo3gwm/LoRa_APRS_iGate_GWM/tree/main/firmware" target="_blank">in here</a> , look for newest an upload over OTA (without needing VSCODE)
 
 This next generation LoRa iGate can work as:
 - pure RX-iGate, 
 - Rx+Tx-iGate and distribute messages and weather forecasts to heard trackers, and 
 - Digipeater in simplex or split-frequency environment.
+- Basic Weather Station (only temperature, pressure and humidity)
 
 In all configurations the display shows the current stationMode, heard packets and events the iGate is currently performing.
+
+How to connect BMP280 to LILYGO T3
+
+<center><img src="https://github.com/yo3gwm/LoRa_APRS_iGate_GWM/blob/main/doc/LilyGO_T3_1.6.1_to_BMP280.png" alt="BMP280 to LILYGO" width="795" height="756"></center> 
 
 But under the hood is much more:
 
@@ -16,18 +21,15 @@ But under the hood is much more:
 - RX first, TX will only be done if there is no traffic on the frequency.
 - automatic update of the Lora symbol at APRS-IS, black "L" for pure RX, red "L" for TX capability, green star "L" for digipeater and blue round "L" for WX iGate.
 - support for multiple WLAN with corresponding coordinates.
-- support for BME280 sensors, sending to WX data to APRS-IS.
+- support for BME280 sensors and BMP280 sensors, sending to WX data to APRS-IS.
 
 and more will come:
 - Web-UI
-- ...
-
-__________________________________________
+- Add RSSI and SNR to received stations
+____________________________________
 
 See also the software for LoRa Tracker https://github.com/richonguzman/LoRa_APRS_Tracker
-
-__________________________________________
-
+____________________________________
 
 Instructions (add your information into the '/data/igate_conf.json'):
 
@@ -74,10 +76,9 @@ g) BME section:
 f) BMP section:
 
     adjust to "active" if BMP280 sensor connected through I2C pins
-
 __________________________________________
 
-LoRa APRS iGATE/Digirepeater working on this boards:
+LoRa APRS iGate/Digirepeater/WX working on this boards:
 - LILYGO ESP32 LoRa32 v2-1-1.6  and T3
 - ESP32 Wroom +  SX1278 LoRa Module for a DIY Version.
 - HELTEC_WIFI_LORA_32_V2 (check "pins_config.h" and "display.cpp" for aditional configuration).
@@ -100,7 +101,6 @@ Versions:
 - 2023.07.31 StationMode5 added: iGate when WiFi and APRS available, DigiRepeater when not.
 - 2023.08.05 Ground Height Correction for Pressure readings added
 - 2023.10.06 Added support for BMP280
-
 __________________________________________
 
 Special Thanks to the help in testing and developing to Manfred (DC2MH) , for showing me the "way of good coding" to Tihomir (CA3TSK) and much more Ham Licence Ops all over the world.
