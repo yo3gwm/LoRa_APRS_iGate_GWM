@@ -1,6 +1,6 @@
-LoRa APRS iGate/Digirepeater/WX Station
+# LoRa APRS iGate/Digirepeater/WX Station
 
-# If you have the 2023.06.12 firmware (or later) you can update newer <a href="https://github.com/yo3gwm/LoRa_APRS_iGate_GWM/tree/main/firmware" target="_blank">in here</a> , look for newest an upload over OTA (without needing VSCODE)
+If you have the 2023.06.12 firmware (or later) you can update newer <a href="https://github.com/yo3gwm/LoRa_APRS_iGate_GWM/tree/main/firmware" target="_blank">in here</a> , look for newest an upload over OTA (without needing VSCODE)
 
 This next generation LoRa iGate can work as:
 - pure RX-iGate, 
