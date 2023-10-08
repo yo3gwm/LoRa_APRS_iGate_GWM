@@ -270,7 +270,7 @@ void typeOfPacket(String packet, String packetType) {
 void startServer() {
     if (stationMode==1 || stationMode==2 || (stationMode==5 && WiFi.status() == WL_CONNECTED)) {
         server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-            request->send(200, "text/html", "<HTML>Hi " + Config.callsign + ", \n\nthis is your LoRa iGate/Digipeater/WX Station , version " + versionDate + ".\n\nTo update your firmware or filesystem go to: <a href=\"http://" + getLocalIP().substring(getLocalIP().indexOf(":")+3) + "/update\">Update Page</a>\n\n\n73!</HTML>");
+            request->send(200, "text/html", "<HTML>Hi " + Config.callsign + ",<BR> this is your LoRa iGate/Digipeater/WX Station , version " + versionDate + ".<BR>To update your firmware or filesystem go to: <a href=\"http://" + getLocalIP().substring(getLocalIP().indexOf(":")+3) + "/update\">Update Page</a><BR>73!</HTML>");
         });
 
 

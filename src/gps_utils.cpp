@@ -83,7 +83,7 @@ String generateBeacon() {
   if (stationMode==1 || stationMode==2 || (stationMode==5 && WiFi.status() == WL_CONNECTED && espClient.connected())) {
     stationLatitude = processLatitudeAPRS(currentWiFi->latitude);
     stationLongitude = processLongitudeAPRS(currentWiFi->longitude);
-    beaconPacket = Config.callsign + ">APLRG1,qAC:=" + stationLatitude + "L" + stationLongitude;
+    beaconPacket = Config.callsign + ">APLCM1,qAC:=" + stationLatitude + "L" + stationLongitude;
     if (stationMode == 1) {
       beaconPacket += "&";
     } else {
@@ -162,13 +162,13 @@ String getReceivedGPS(String packet) {
 String getDistance(String packet) {
   int encodedBytePosition = 0;
   if (packet.indexOf(":!") > 10) {
-    encodedBytePosition = packet.indexOf(":!") + 14;
+    encodedBytePosition = packet.indexOf(":!") + 2;
   }
   if (packet.indexOf(":=") > 10) {
-    encodedBytePosition = packet.indexOf(":=") + 14;
+    encodedBytePosition = packet.indexOf(":=") + 2;
   }
   if (encodedBytePosition != 0) {
-    if (String(packet[encodedBytePosition]) == "G" || String(packet[encodedBytePosition]) == "Q") {
+    if (!isdigit(char(packet[encodedBytePosition])) || !isdigit(char(packet[encodedBytePosition+1]))) {
       return decodeEncodedGPS(packet);
     } else {
       return getReceivedGPS(packet);

@@ -12,7 +12,7 @@ WiFiUDP udpClient;
 namespace SYSLOG_Utils {
 
 void log(String type, String packet, int rssi, float snr, int freqError) {
-    String syslogPacket = "ESP32 LoRa [APRS] - " + Config.callsign + " - ";
+    String syslogPacket = Config.callsign + " LoRa - ";
     if (Config.syslog.active && (stationMode==1 || stationMode==2)) {
         if (type == "APRSIS Tx") {
             if (packet.indexOf(":>") > 10) {

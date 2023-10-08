@@ -1,4 +1,5 @@
 #include <WiFi.h>
+#include <LoRa.h>
 #include "configuration.h"
 #include "aprs_is_utils.h"
 #include "station_utils.h"
@@ -101,7 +102,7 @@ void processLoRaPacket(String packet) {
                 for(int i = Sender.length(); i < 9; i++) {
                   Sender += ' ';
                 }
-                LoRa_Utils::sendNewPacket("APRS", Config.callsign + ">APLRG1,RFONLY::" + Sender + ":" + ackMessage);
+                LoRa_Utils::sendNewPacket("APRS", Config.callsign + ">APLCM1,RFONLY::" + Sender + ":" + ackMessage);
                 receivedMessage = AddresseeAndMessage.substring(AddresseeAndMessage.indexOf(":")+1, AddresseeAndMessage.indexOf("{"));
               } else {
                 receivedMessage = AddresseeAndMessage.substring(AddresseeAndMessage.indexOf(":")+1);
@@ -120,6 +121,7 @@ void processLoRaPacket(String packet) {
           }
         }
         if (!queryMessage) {
+          packet += " RSSI:" + String(LoRa.packetRssi()) + "dBm SNR: " + String(LoRa.packetSnr()) + "dBm";
           aprsPacket = createPacket(packet);
           if (!Config.display.alwaysOn) {
             display_toggle(true);
