@@ -14,7 +14,7 @@ String process(String query, String station, String queryOrigin) {
   if (query=="?APRS?" || query=="?aprs?" || query=="?Aprs?" || query=="H" || query=="h" || query=="HELP" || query=="Help" || query=="help" || query=="?") {
     answer = "?APRSV ?APRSP ?APRSL ?APRSH ?WHERE callsign";
   } else if (query=="?APRSV" || query=="?aprsv" || query=="?Aprsv") {
-    answer = "YO3GWM_LoRa_iGate 1.3 v" + versionDate;
+    answer = "CA2RXU_LoRa_iGate 1.2 v" + versionDate;
   } else if (query=="?APRSP" || query=="?aprsp" || query=="?Aprsp") {
     answer = "iGate QTH: " + String(currentWiFi->latitude,2) + " " + String(currentWiFi->longitude,2);
   } else if (query=="?APRSL" || query=="?aprsl" || query=="?Aprsl") {
@@ -28,7 +28,7 @@ String process(String query, String station, String queryOrigin) {
     }
   } else if (query.indexOf("?APRSH") == 0 || query.indexOf("?aprsh") == 0 || query.indexOf("?Aprsh") == 0) {
      // sacar callsign despues de ?APRSH
-    Serial.println("escuchaste a X estacion? en las ultimas 24 o 8 horas?");
+    Serial.println("escuchaste a X estacion? en las ultimas 24 o 8 horas ?");
     answer = "APRSH on development 73!";
   } else if (query.indexOf("?WHERE") == 0) { 
     // agregar callsign para completar donde esta X callsign --> posicion
@@ -39,9 +39,9 @@ String process(String query, String station, String queryOrigin) {
     station += ' ';
   }
   if (queryOrigin == "APRSIS") {
-    return Config.callsign + ">APLCM1,TCPIP,qAC::" + station + ":" + answer + "\n";
+    return Config.callsign + ">APLRG1,TCPIP,qAC::" + station + ":" + answer + "\n";
   } else { //} if (queryOrigin == "LoRa") {
-    return Config.callsign + ">APLCM1,RFONLY::" + station + ":" + answer;
+    return Config.callsign + ">APLRG1,RFONLY::" + station + ":" + answer;
   }
 }
 

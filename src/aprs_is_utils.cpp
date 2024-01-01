@@ -102,7 +102,7 @@ void processLoRaPacket(String packet) {
                 for(int i = Sender.length(); i < 9; i++) {
                   Sender += ' ';
                 }
-                LoRa_Utils::sendNewPacket("APRS", Config.callsign + ">APLCM1,RFONLY::" + Sender + ":" + ackMessage);
+                LoRa_Utils::sendNewPacket("APRS", Config.callsign + ">APLRG1,RFONLY::" + Sender + ":" + ackMessage);
                 receivedMessage = AddresseeAndMessage.substring(AddresseeAndMessage.indexOf(":")+1, AddresseeAndMessage.indexOf("{"));
               } else {
                 receivedMessage = AddresseeAndMessage.substring(AddresseeAndMessage.indexOf(":")+1);
