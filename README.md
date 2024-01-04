@@ -1,6 +1,6 @@
 # LoRa APRS iGate/Digirepeater/WX Station
 
-<B>For testing only.</B>
+# For testing only.
 
 Please use the software here: https://github.com/richonguzman/LoRa_APRS_iGate
 
