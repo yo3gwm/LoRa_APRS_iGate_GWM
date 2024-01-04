@@ -2,7 +2,7 @@
 
 # For testing only.
 
-Please use the software here: https://github.com/richonguzman/LoRa_APRS_iGate
+Please use the software from here : https://github.com/richonguzman/LoRa_APRS_iGate
 
 How to connect BMP280 to LILYGO T3
 
